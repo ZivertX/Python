@@ -73,9 +73,9 @@ pipeline {
                                 git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
-                                git add -A
-				git diff --quiet && git diff --staged --quiet || git commit -am 'Jenkins automatic update commit'
-                                git push -u origin main
+                                git add merged_output.json
+                                git commit -m "Automatically committed merged JSON output" || echo "Nothing to commit"
+                                git push -u origin ${GIT_BRANCH} || echo "Nothing to push"
                             '''
                         // }
                     } catch (Exception e) {
