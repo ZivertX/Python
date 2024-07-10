@@ -4,10 +4,15 @@ pipeline {
     parameters {
         string(name: 'URL1', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/1st.json', description: 'URL to the first JSON file')
         string(name: 'URL2', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/2nd.json', description: 'URL to the second JSON file')
+        string(name: 'GIT_URL', defaultValue: 'https://github.com/ALEXNETHUNTER/Python.git', description: 'Git repository URL')
+        string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch name')
+        string(name: 'GIT_CREDENTIALS_ID', defaultValue: 'my-git-credentials-id', description: 'Jenkins credentials ID for Git')
     }
 
     environment {
         gitlabSourceBranch = 'main'
+        GIT_AUTHOR_EMAIL = 'alexnethunter@gmail.com'
+        GIT_AUTHOR_NAME = 'alexnethunter'
     }
     
     options {
@@ -31,7 +36,8 @@ pipeline {
         // }
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
+                git credentialsId: params.GIT_CREDENTIALS_ID, url: params.GIT_URL, branch: params.GIT_BRANCH
+                // git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
                 // checkout scmGit(branches: [[name: 'main']], 
                 //                 userRemoteConfigs: [[url: 'https://github.com/ALEXNETHUNTER/Python']])
             }
@@ -58,27 +64,25 @@ pipeline {
         
         stage('Commit Output') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'Git-Pass', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-                     sh '''
-                        git config --global user.email "alexnethunter@gmail.com"
-                        git config --global user.name "${GIT_USERNAME}"
-                        git config --global user.password "${GIT_PASSWORD}"
-                        git add merged_output.json
-                        git commit -m "Automatically committed merged JSON output"
-                        git push -u origin main
-
-                    '''
-                // script {
-                //     try {
-                //         gitAdd()
-                //         gitCommit(message: 'Automated commit: merged JSON files')
-                //         gitPush()
-                //     } catch (Exception e) {
-                //         echo "Failed to commit and push merged output: ${e.message}"
-                //         currentBuild.result = 'FAILURE'
-                //         error("${e.message}")
-                //     }
-                //     }
+                script {
+                    try {
+                        // Push changes to Git repository
+                        // withCredentials([usernamePassword(credentialsId: params.GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                            sh '''
+                                git config --global credential.helper store
+                                git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
+                                git config --global user.email "${GIT_AUTHOR_EMAIL}"
+                                git config --global user.name "${GIT_AUTHOR_NAME}"
+                                git add merged_output.json
+                                git commit -m "Automatically committed merged JSON output"
+                                git push -u origin ${GIT_BRANCH}
+                            '''
+                        // }
+                    } catch (Exception e) {
+                        echo "Failed to push to Git repository: ${e.message}"
+                        currentBuild.result = 'FAILURE'
+                        error("${e.message}")
+                    }
                 }
             }
         }
