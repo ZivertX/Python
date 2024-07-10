@@ -2,8 +2,8 @@ pipeline {
     agent any
     
     parameters {
-        string(name: 'URL1', description: 'URL to the first JSON file')
-        string(name: 'URL2', description: 'URL to the second JSON file')
+        string(name: 'URL1', defaultValue: 'http://192.168.1.200/1st.json', description: 'URL to the first JSON file')
+        string(name: 'URL2', defaultValue: 'http://192.168.1.200/2nd.json', description: 'URL to the second JSON file')
     }
     
     options {
@@ -20,12 +20,17 @@ pipeline {
                 }
             }
         }
-
-        stage('Checkout source from repo') {
+        stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python.git'
+                checkout scmGit(branches: [[name: 'main']], 
+                                userRemoteConfigs: [[url: 'https://github.com/ALEXNETHUNTER/Python']])
             }
         }
+        // stage('Checkout source from repo') {
+        //     steps {
+        //         git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
+        //     }
+        // }
         
         stage('Fetch & Merge JSONs') {
             steps {
