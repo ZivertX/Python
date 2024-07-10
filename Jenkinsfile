@@ -74,7 +74,7 @@ pipeline {
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
                                 git add -A
-				git diff-index --quiet HEAD || git commit -m 'Jenkins automatic update commit'
+				git diff --quiet && git diff --staged --quiet || git commit -am 'Jenkins automatic update commit'
                                 git push -u origin main
                             '''
                         // }
