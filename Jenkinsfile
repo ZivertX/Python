@@ -5,6 +5,10 @@ pipeline {
         string(name: 'URL1', defaultValue: 'https://github.com/ALEXNETHUNTER/Python/blob/main/1st.json', description: 'URL to the first JSON file')
         string(name: 'URL2', defaultValue: 'https://github.com/ALEXNETHUNTER/Python/blob/main/2nd.json', description: 'URL to the second JSON file')
     }
+
+    environment {
+        gitlabSourceBranch = 'main'
+    }
     
     options {
         disableConcurrentBuilds()
