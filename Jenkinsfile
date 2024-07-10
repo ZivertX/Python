@@ -6,7 +6,7 @@ pipeline {
         string(name: 'URL2', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/2nd.json', description: 'URL to the second JSON file')
         string(name: 'GIT_URL', defaultValue: 'https://github.com/ALEXNETHUNTER/Python.git', description: 'Git repository URL')
         string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch name')
-        string(name: 'GIT_CREDENTIALS_ID', defaultValue: 'Git-Pass', description: 'Jenkins credentials ID for Git')
+        string(name: 'GIT_CREDENTIALS_ID', defaultValue: 'my-git-credentials-id', description: 'Jenkins credentials ID for Git')
     }
 
     environment {
@@ -67,17 +67,17 @@ pipeline {
                 script {
                     try {
                         // Push changes to Git repository
-                        withCredentials([usernamePassword(credentialsId: params.GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                        // withCredentials([usernamePassword(credentialsId: params.GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                             sh '''
                                 git config --global credential.helper store
-                                git remote set-url origin https://${GIT_PASSWORD}@github.com/ALEXNETHUNTER/Python.git
+                                git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
                                 git add merged_output.json
                                 git commit -m "Automatically committed merged JSON output"
                                 git push -u origin ${GIT_BRANCH}
                             '''
-                        }
+                        // }
                     } catch (Exception e) {
                         echo "Failed to push to Git repository: ${e.message}"
                         currentBuild.result = 'FAILURE'
