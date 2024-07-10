@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "python json_merge.py ${params.URL1} ${params.URL2}"
+                        sh "python3 json_merge.py ${params.URL1} ${params.URL2}"
                     } catch (Exception e) {
                         echo "Failed to fetch and merge JSON files: ${e.message}"
                         currentBuild.result = 'FAILURE'
