@@ -2,8 +2,8 @@ pipeline {
     agent any
     
     parameters {
-        string(name: 'URL1', defaultValue: 'http://192.168.1.200/1st.json', description: 'URL to the first JSON file')
-        string(name: 'URL2', defaultValue: 'http://192.168.1.200/2nd.json', description: 'URL to the second JSON file')
+        string(name: 'URL1', defaultValue: 'https://github.com/ALEXNETHUNTER/Python/blob/main/1st.json', description: 'URL to the first JSON file')
+        string(name: 'URL2', defaultValue: 'https://github.com/ALEXNETHUNTER/Python/blob/main/2nd.json', description: 'URL to the second JSON file')
     }
     
     options {
