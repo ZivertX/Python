@@ -70,7 +70,7 @@ pipeline {
                         // withCredentials([usernamePassword(credentialsId: params.GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                             sh '''
                                 git config --global credential.helper store
-                                git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
+                                git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
                                 git add merged_output.json
