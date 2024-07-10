@@ -74,7 +74,7 @@ pipeline {
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
                                 git add -A
-								git diff-index --quiet HEAD || git commit -m "Automatically committed merged JSON output"
+				git diff-index --quiet HEAD || git commit -m "Automatically committed merged JSON output"
                                 git push -u origin main
                             '''
                         // }
