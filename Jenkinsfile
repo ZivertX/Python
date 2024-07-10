@@ -1,11 +1,9 @@
 pipeline {
     agent any
-    environment { 
-        gitlabSourceBranch = '*/main'
-    }
+    
     parameters {
-        string(name: 'https://github.com/ALEXNETHUNTER/Python/blob/main/1st.json', description: 'URL to the first JSON file')
-        string(name: 'https://github.com/ALEXNETHUNTER/Python/blob/main/2dn.json', description: 'URL to the second JSON file')
+        string(name: 'URL1', description: 'URL to the first JSON file')
+        string(name: 'URL2', description: 'URL to the second JSON file')
     }
     
     options {
@@ -25,7 +23,7 @@ pipeline {
 
         stage('Checkout source from repo') {
             steps {
-                git 'https://github.com/ALEXNETHUNTER/Python.git'
+                git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python.git'
             }
         }
         
@@ -45,7 +43,7 @@ pipeline {
         
         stage('Commit Output') {
             steps {
-                withCredentials([usernamePassword(git branch: 'main', credentialsId: 'my-git-credentials-id', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'my-git-credentials-id', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                 script {
                     try {
                         gitAdd()
