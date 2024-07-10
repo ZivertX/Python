@@ -60,7 +60,8 @@ pipeline {
                             git config --global user.email "${GIT_AUTHOR_EMAIL}"
                             git config --global user.name "${GIT_AUTHOR_NAME}"
                             git add merged_output.json
-                            git commit -a -m "Automatically committed merged JSON output" || true
+                            git add -A
+                            git diff-index --quiet HEAD || git commit -m "Jenkins automatic update commit"
                             git push -u origin main
                         '''
                     } catch (Exception e) {
