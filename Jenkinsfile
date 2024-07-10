@@ -67,7 +67,7 @@ pipeline {
                 script {
                     try {
                         // Push changes to Git repository
-                        // withCredentials([usernamePassword(credentialsId: params.GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                        withCredentials([usernamePassword(credentialsId: params.GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                             sh '''
                                 git config --global credential.helper store
                                 git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
@@ -75,9 +75,9 @@ pipeline {
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
                                 git add merged_output.json
                                 git commit -m "Automatically committed merged JSON output"
-                                git push -u origin ${GIT_BRANCH}
+                                git push origin ${GIT_BRANCH}
                             '''
-                        // }
+                        }
                     } catch (Exception e) {
                         echo "Failed to push to Git repository: ${e.message}"
                         currentBuild.result = 'FAILURE'
