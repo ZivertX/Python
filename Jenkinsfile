@@ -22,15 +22,16 @@ pipeline {
         }
         stage('Checkout') {
             steps {
-                checkout scmGit(branches: [[name: 'main']], 
-                                userRemoteConfigs: [[url: 'https://github.com/ALEXNETHUNTER/Python']])
+                git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
+                // checkout scmGit(branches: [[name: 'main']], 
+                //                 userRemoteConfigs: [[url: 'https://github.com/ALEXNETHUNTER/Python']])
             }
         }
-        // stage('Checkout source from repo') {
-        //     steps {
-        //         git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
-        //     }
-        // }
+        // // stage('Checkout source from repo') {
+        // //     steps {
+        // //         git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
+        // //     }
+        // // }
         
         stage('Fetch & Merge JSONs') {
             steps {
