@@ -24,12 +24,12 @@ Running on Jenkins in /var/lib/jenkins/workspace/PYTEST
 [2024-07-11T10:05:58.890Z] using credential my-git-credentials-id
 [2024-07-11T10:05:58.938Z]  > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/PYTEST/.git # timeout=10
 [2024-07-11T10:05:58.940Z] Fetching changes from the remote Git repository
-[2024-07-11T10:05:58.942Z]  > git config remote.origin.url https://github.com/ALEXNETHUNTER/Python.git # timeout=10
-[2024-07-11T10:05:58.944Z] Fetching upstream changes from https://github.com/ALEXNETHUNTER/Python.git
+[2024-07-11T10:05:58.942Z]  > git config remote.origin.url https://github.com/ZivertX/Python.git # timeout=10
+[2024-07-11T10:05:58.944Z] Fetching upstream changes from https://github.com/ZivertX/Python.git
 [2024-07-11T10:05:58.944Z]  > git --version # timeout=10
 [2024-07-11T10:05:58.949Z]  > git --version # 'git version 2.34.1'
 [2024-07-11T10:05:58.949Z] using GIT_ASKPASS to set credentials GIT CREDS
-[2024-07-11T10:05:58.952Z]  > git fetch --tags --force --progress -- https://github.com/ALEXNETHUNTER/Python.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2024-07-11T10:05:58.952Z]  > git fetch --tags --force --progress -- https://github.com/ZivertX/Python.git +refs/heads/*:refs/remotes/origin/* # timeout=10
 [2024-07-11T10:05:59.337Z]  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
 [2024-07-11T10:05:59.339Z] Checking out Revision 83f27b6f4999a0d81cf446ffda9e8fb6312b8851 (refs/remotes/origin/main)
 [2024-07-11T10:05:59.339Z]  > git config core.sparsecheckout # timeout=10
@@ -46,7 +46,7 @@ Running on Jenkins in /var/lib/jenkins/workspace/PYTEST
 [Pipeline] script
 [Pipeline] {
 [Pipeline] sh
-[2024-07-11T10:06:00.035Z] + python3 json_merge.py https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/1st.json https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/2nd.json
+[2024-07-11T10:06:00.035Z] + python3 json_merge.py https://raw.githubusercontent.com/ZivertX/Python/main/1st.json https://raw.githubusercontent.com/ZivertX/Python/main/2nd.json
 [2024-07-11T10:06:00.286Z] {
 [2024-07-11T10:06:00.286Z]     "widget": {
 [2024-07-11T10:06:00.286Z]         "debug": "on",
@@ -134,16 +134,16 @@ Running on Jenkins in /var/lib/jenkins/workspace/PYTEST
 [Pipeline] script
 [Pipeline] {
 [Pipeline] sh
-[2024-07-11T10:06:01.042Z] + git remote set-url origin https://TOKEN@github.com/ALEXNETHUNTER/Python.git
-[2024-07-11T10:06:01.042Z] + git config --global user.email alexnethunter@gmail.com
-[2024-07-11T10:06:01.042Z] + git config --global user.name alexnethunter
+[2024-07-11T10:06:01.042Z] + git remote set-url origin https://TOKEN@github.com/ZivertX/Python.git
+[2024-07-11T10:06:01.042Z] + git config --global user.email ZivertX@gmail.com
+[2024-07-11T10:06:01.042Z] + git config --global user.name ZivertX
 [2024-07-11T10:06:01.042Z] + git add -A
 [2024-07-11T10:06:01.042Z] + git commit -m Automatically committed merged JSON output
 [2024-07-11T10:06:01.042Z] [main c25dd7e] Automatically committed merged JSON output
 [2024-07-11T10:06:01.042Z]  1 file changed, 77 insertions(+)
 [2024-07-11T10:06:01.042Z]  create mode 100644 merged_output.json
 [2024-07-11T10:06:01.042Z] + git push -u origin main
-[2024-07-11T10:06:02.386Z] To https://github.com/ALEXNETHUNTER/Python.git
+[2024-07-11T10:06:02.386Z] To https://github.com/ZivertX/Python.git
 [2024-07-11T10:06:02.386Z]    83f27b6..c25dd7e  main -> main
 [2024-07-11T10:06:02.386Z] Branch 'main' set up to track remote branch 'main' from 'origin'.
 [Pipeline] }

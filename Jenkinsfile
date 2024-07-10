@@ -2,17 +2,17 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'URL1', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/1st.json', description: 'URL to the first JSON file')
-        string(name: 'URL2', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/2nd.json', description: 'URL to the second JSON file')
-        string(name: 'GIT_URL', defaultValue: 'https://github.com/ALEXNETHUNTER/Python.git', description: 'Git repository URL')
+        string(name: 'URL1', defaultValue: 'https://raw.githubusercontent.com/ZivertX/Python/main/1st.json', description: 'URL to the first JSON file')
+        string(name: 'URL2', defaultValue: 'https://raw.githubusercontent.com/ZivertX/Python/main/2nd.json', description: 'URL to the second JSON file')
+        string(name: 'GIT_URL', defaultValue: 'https://github.com/ZivertX/Python.git', description: 'Git repository URL')
         string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch name')
         string(name: 'GIT_CREDENTIALS_ID', defaultValue: 'my-git-credentials-id', description: 'Jenkins credentials ID for Git')
     }
 
     environment {
         gitlabSourceBranch = 'main'
-        GIT_AUTHOR_EMAIL = 'alexnethunter@gmail.com'
-        GIT_AUTHOR_NAME = 'alexnethunter'
+        GIT_AUTHOR_EMAIL = 'ZivertX@gmail.com'
+        GIT_AUTHOR_NAME = 'ZivertX'
     }
     
     options {
@@ -66,7 +66,7 @@ pipeline {
                 script {
                     try {
                             sh '''
-                                git remote set-url origin https://$TOKEN@github.com/ALEXNETHUNTER/Python.git
+                                git remote set-url origin https://$TOKEN@github.com/ZivertX/Python.git
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
                                 git add -A
