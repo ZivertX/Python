@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     parameters {
         string(name: 'URL1', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/1st.json', description: 'URL to the first JSON file')
         string(name: 'URL2', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/2nd.json', description: 'URL to the second JSON file')
@@ -29,25 +29,19 @@ pipeline {
                 }
             }
         }
-        // stage('Install Python Req.') {
-        //     steps {
-        //         sh 'pip install -r requirements.txt'
-        //     }
-        // }
+
+        stage('Install Python Req.') {
+            steps {
+                sh 'python3 -m pip install requests'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 git credentialsId: params.GIT_CREDENTIALS_ID, url: params.GIT_URL, branch: params.GIT_BRANCH
-                // git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
-                // checkout scmGit(branches: [[name: 'main']], 
-                //                 userRemoteConfigs: [[url: 'https://github.com/ALEXNETHUNTER/Python']])
             }
         }
-        // // stage('Checkout source from repo') {
-        // //     steps {
-        // //         git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
-        // //     }
-        // // }
-        
+
         stage('Fetch & Merge JSONs') {
             steps {
                 script {
@@ -66,8 +60,6 @@ pipeline {
             steps {
                 script {
                     try {
-                        // Push changes to Git repository
-                        // withCredentials([usernamePassword(credentialsId: params.GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                             sh '''
                                 git config --global credential.helper store
                                 git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
@@ -77,7 +69,6 @@ pipeline {
                                 git commit -m "Automatically committed merged JSON output" || echo "Nothing to commit"
                                 git push -u origin ${GIT_BRANCH} || echo "Nothing to push"
                             '''
-                        // }
                     } catch (Exception e) {
                         echo "Failed to push to Git repository: ${e.message}"
                         currentBuild.result = 'FAILURE'
