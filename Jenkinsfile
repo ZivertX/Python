@@ -24,11 +24,11 @@ pipeline {
                 }
             }
         }
-        stage('Install Python Req.') {
-            steps {
-                sh 'sh pip install -r requirements.txt'
-            }
-        }
+        // stage('Install Python Req.') {
+        //     steps {
+        //         sh 'pip install -r requirements.txt'
+        //     }
+        // }
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/ALEXNETHUNTER/Python'
