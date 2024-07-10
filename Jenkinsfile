@@ -19,8 +19,8 @@ pipeline {
         stage("Add a description for the build") {
             steps {
                 script {
-                    env.currentBuild.displayName = "Operate JSON files using a Python"
-                    env.currentBuild.description = "Operate JSON files using a Python description"
+                    currentBuild.displayName = "Operate JSON files using a Python"
+                    currentBuild.description = "Operate JSON files using a Python description"
                 }
             }
         }
