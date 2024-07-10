@@ -2,8 +2,8 @@ pipeline {
     agent any
     
     parameters {
-        string(name: 'URL1', defaultValue: 'https://github.com/ALEXNETHUNTER/Python/blob/main/1st.json', description: 'URL to the first JSON file')
-        string(name: 'URL2', defaultValue: 'https://github.com/ALEXNETHUNTER/Python/blob/main/2nd.json', description: 'URL to the second JSON file')
+        string(name: 'URL1', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/1st.json', description: 'URL to the first JSON file')
+        string(name: 'URL2', defaultValue: 'https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/2nd.json', description: 'URL to the second JSON file')
     }
 
     environment {
@@ -58,18 +58,27 @@ pipeline {
         
         stage('Commit Output') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'my-git-credentials-id', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-                script {
-                    try {
-                        gitAdd()
-                        gitCommit(message: 'Automated commit: merged JSON files')
-                        gitPush()
-                    } catch (Exception e) {
-                        echo "Failed to commit and push merged output: ${e.message}"
-                        currentBuild.result = 'FAILURE'
-                        error("${e.message}")
-                    }
-                    }
+                withCredentials([usernamePassword(credentialsId: 'Git-Pass', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                     sh '''
+                        git config --global user.email "alexnethunter@gmail.com"
+                        git config --global user.name "${GIT_USERNAME}"
+                        git config --global user.password "${GIT_PASSWORD}"
+                        git add merged_output.json
+                        git commit -m "Automatically committed merged JSON output"
+                        git push -u origin main
+
+                    '''
+                // script {
+                //     try {
+                //         gitAdd()
+                //         gitCommit(message: 'Automated commit: merged JSON files')
+                //         gitPush()
+                //     } catch (Exception e) {
+                //         echo "Failed to commit and push merged output: ${e.message}"
+                //         currentBuild.result = 'FAILURE'
+                //         error("${e.message}")
+                //     }
+                //     }
                 }
             }
         }
