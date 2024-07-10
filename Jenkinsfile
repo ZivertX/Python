@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+    environment { 
+        gitlabSourceBranch = '*/main'
+    }
     parameters {
         string(name: 'https://github.com/ALEXNETHUNTER/Python/blob/main/1st.json', description: 'URL to the first JSON file')
         string(name: 'https://github.com/ALEXNETHUNTER/Python/blob/main/2dn.json', description: 'URL to the second JSON file')
