@@ -21,6 +21,7 @@ pipeline {
                 script {
                     currentBuild.displayName = "Operate JSON files using a Python"
                     currentBuild.description = "Operate JSON files using a Python description"
+                    sh pip install -r requirements.txt
                 }
             }
         }
