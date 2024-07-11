@@ -41,7 +41,7 @@ def merge_json_files(url1, url2):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("Usage: python merge_jsons.py <URL1> <URL2>")
+        print("Usage: python json_merge.py <URL1> <URL2>")
         sys.exit(1)
 
     url1 = sys.argv[1]
