@@ -30,13 +30,6 @@ pipeline {
             }
         }
 
-        stage('Install Python Req.') {
-            steps {
-                sh 'apt install python3-pip'
-                sh 'python3 -m pip install requests'
-            }
-        }
-
         stage('Checkout') {
             steps {
                 git credentialsId: params.GIT_CREDENTIALS_ID, url: params.GIT_URL, branch: params.GIT_BRANCH
