@@ -58,7 +58,7 @@ pipeline {
                                 git remote set-url origin https://$TOKEN@github.com/ALEXNETHUNTER/Python.git
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
-                                git add merged_output.json
+                                git add -A
                                 git commit -m "Automatically committed merged JSON output" || echo "Nothing to commit"
                                 git push -u origin ${GIT_BRANCH} || echo "Nothing to push"
                             '''
