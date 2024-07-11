@@ -36,6 +36,18 @@ pipeline {
             }
         }
 
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    '''
+                        sh 'sudo apt install python3-pip'
+                        sh 'pip install requests'
+                    '''
+                }
+            }
+        }
+
         stage('Fetch & Merge JSONs') {
             steps {
                 script {
