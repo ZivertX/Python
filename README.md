@@ -2,7 +2,7 @@
 
 # Jenkins Configuration
 Install Required Plugins: Ensure that your Jenkins instance has the necessary plugins installed, including the Git plugin
-and Python requests library (run in command line `python -m pip install requests`)
+and Python requests library (run in command line `python -m pip install requests`) or via Pipeline
 
 Configure Pipeline Job:
 
