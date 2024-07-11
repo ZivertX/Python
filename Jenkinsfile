@@ -62,7 +62,7 @@ pipeline {
                     try {
                             sh '''
                                 git config --global credential.helper store
-                                git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
+                                git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
                                 git add merged_output.json
