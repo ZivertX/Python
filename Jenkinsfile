@@ -32,7 +32,7 @@ pipeline {
 
         stage('Install Python Req.') {
             steps {
-                sh 'sudo -s && apt install python3-pip'
+                sh 'apt install python3-pip'
                 sh 'python3 -m pip install requests'
             }
         }
