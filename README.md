@@ -11,7 +11,8 @@ Configure the job to use the Jenkinsfile from your Git repository.
 
 Configure Parameters:
 
-Add parameters URL1 and URL2 to the job configuration.
+Generate new token for push action (Support for password authentication was removed on August 13, 2021.) 
+Add TOKEN variable under system variables in Jenkins configuration and paste token string
 
 Run the Pipeline:
 
