@@ -1,0 +1,166 @@
+Started by user unknown or anonymous
+Replayed Operate JSON files using a Python
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/PYTEST
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Add a description for the build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] git
+[2024-07-11T10:19:49.711Z] Selected Git installation does not exist. Using Default
+[2024-07-11T10:19:49.711Z] The recommended git tool is: NONE
+[2024-07-11T10:19:49.711Z] using credential my-git-credentials-id
+[2024-07-11T10:19:49.735Z]  > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/PYTEST/.git # timeout=10
+[2024-07-11T10:19:49.737Z] Fetching changes from the remote Git repository
+[2024-07-11T10:19:49.738Z]  > git config remote.origin.url https://github.com/ALEXNETHUNTER/Python.git # timeout=10
+[2024-07-11T10:19:49.741Z] Fetching upstream changes from https://github.com/ALEXNETHUNTER/Python.git
+[2024-07-11T10:19:49.741Z]  > git --version # timeout=10
+[2024-07-11T10:19:49.743Z]  > git --version # 'git version 2.34.1'
+[2024-07-11T10:19:49.743Z] using GIT_ASKPASS to set credentials GIT CREDS
+[2024-07-11T10:19:49.745Z]  > git fetch --tags --force --progress -- https://github.com/ALEXNETHUNTER/Python.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2024-07-11T10:19:50.374Z]  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+[2024-07-11T10:19:50.376Z] Checking out Revision 8728849e4cc2a2f941b350e68ee2dba80a13e40d (refs/remotes/origin/main)
+[2024-07-11T10:19:50.376Z]  > git config core.sparsecheckout # timeout=10
+[2024-07-11T10:19:50.379Z]  > git checkout -f 8728849e4cc2a2f941b350e68ee2dba80a13e40d # timeout=10
+[2024-07-11T10:19:50.383Z]  > git branch -a -v --no-abbrev # timeout=10
+[2024-07-11T10:19:50.387Z]  > git branch -D main # timeout=10
+[2024-07-11T10:19:50.390Z]  > git checkout -b main 8728849e4cc2a2f941b350e68ee2dba80a13e40d # timeout=10
+[2024-07-11T10:19:50.395Z] Commit message: "Update README.md"
+[2024-07-11T10:19:50.395Z]  > git rev-list --no-walk 83f27b6f4999a0d81cf446ffda9e8fb6312b8851 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Fetch & Merge JSONs)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2024-07-11T10:19:50.961Z] + python3 json_merge.py https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/1st.json https://raw.githubusercontent.com/ALEXNETHUNTER/Python/main/2nd.json
+[2024-07-11T10:19:51.512Z] {
+[2024-07-11T10:19:51.512Z]     "widget": {
+[2024-07-11T10:19:51.512Z]         "debug": "on",
+[2024-07-11T10:19:51.512Z]         "windows": [
+[2024-07-11T10:19:51.512Z]             {
+[2024-07-11T10:19:51.512Z]                 "title": "Sample Konfabulator Widget",
+[2024-07-11T10:19:51.512Z]                 "name": "main_window",
+[2024-07-11T10:19:51.512Z]                 "width": 500,
+[2024-07-11T10:19:51.512Z]                 "height": 500
+[2024-07-11T10:19:51.512Z]             },
+[2024-07-11T10:19:51.512Z]             {
+[2024-07-11T10:19:51.512Z]                 "title": "Another Widget Example",
+[2024-07-11T10:19:51.512Z]                 "name": "secondary_window",
+[2024-07-11T10:19:51.512Z]                 "width": 800,
+[2024-07-11T10:19:51.512Z]                 "height": 600
+[2024-07-11T10:19:51.512Z]             }
+[2024-07-11T10:19:51.512Z]         ],
+[2024-07-11T10:19:51.512Z]         "images": [
+[2024-07-11T10:19:51.512Z]             {
+[2024-07-11T10:19:51.512Z]                 "src": "Images/Sun.png",
+[2024-07-11T10:19:51.512Z]                 "name": "sun1",
+[2024-07-11T10:19:51.512Z]                 "hOffset": 250,
+[2024-07-11T10:19:51.512Z]                 "vOffset": 250,
+[2024-07-11T10:19:51.512Z]                 "alignment": "center"
+[2024-07-11T10:19:51.512Z]             },
+[2024-07-11T10:19:51.512Z]             {
+[2024-07-11T10:19:51.512Z]                 "src": "Images/Moon.png",
+[2024-07-11T10:19:51.512Z]                 "name": "moon1",
+[2024-07-11T10:19:51.512Z]                 "hOffset": 100,
+[2024-07-11T10:19:51.512Z]                 "vOffset": 100,
+[2024-07-11T10:19:51.512Z]                 "alignment": "left"
+[2024-07-11T10:19:51.512Z]             }
+[2024-07-11T10:19:51.512Z]         ],
+[2024-07-11T10:19:51.512Z]         "texts": [
+[2024-07-11T10:19:51.512Z]             {
+[2024-07-11T10:19:51.512Z]                 "data": "Click Here",
+[2024-07-11T10:19:51.512Z]                 "size": 36,
+[2024-07-11T10:19:51.512Z]                 "style": "bold",
+[2024-07-11T10:19:51.512Z]                 "name": "text1",
+[2024-07-11T10:19:51.512Z]                 "hOffset": 250,
+[2024-07-11T10:19:51.512Z]                 "vOffset": 100,
+[2024-07-11T10:19:51.512Z]                 "alignment": "center",
+[2024-07-11T10:19:51.512Z]                 "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
+[2024-07-11T10:19:51.512Z]             },
+[2024-07-11T10:19:51.512Z]             {
+[2024-07-11T10:19:51.512Z]                 "data": "Press Here",
+[2024-07-11T10:19:51.512Z]                 "size": 24,
+[2024-07-11T10:19:51.512Z]                 "style": "italic",
+[2024-07-11T10:19:51.512Z]                 "name": "text2",
+[2024-07-11T10:19:51.512Z]                 "hOffset": 100,
+[2024-07-11T10:19:51.512Z]                 "vOffset": 200,
+[2024-07-11T10:19:51.512Z]                 "alignment": "left",
+[2024-07-11T10:19:51.512Z]                 "onMouseUp": "moon1.opacity = (moon1.opacity / 100) * 80;"
+[2024-07-11T10:19:51.512Z]             }
+[2024-07-11T10:19:51.512Z]         ],
+[2024-07-11T10:19:51.512Z]         "menu": {
+[2024-07-11T10:19:51.512Z]             "id": "file",
+[2024-07-11T10:19:51.512Z]             "value": "File",
+[2024-07-11T10:19:51.512Z]             "popup": {
+[2024-07-11T10:19:51.512Z]                 "menuitem": [
+[2024-07-11T10:19:51.512Z]                     {
+[2024-07-11T10:19:51.512Z]                         "value": "New",
+[2024-07-11T10:19:51.512Z]                         "onclick": "CreateNewDoc()"
+[2024-07-11T10:19:51.512Z]                     },
+[2024-07-11T10:19:51.512Z]                     {
+[2024-07-11T10:19:51.512Z]                         "value": "Open",
+[2024-07-11T10:19:51.512Z]                         "onclick": "OpenDoc()"
+[2024-07-11T10:19:51.512Z]                     },
+[2024-07-11T10:19:51.512Z]                     {
+[2024-07-11T10:19:51.512Z]                         "value": "Close",
+[2024-07-11T10:19:51.512Z]                         "onclick": "CloseDoc()"
+[2024-07-11T10:19:51.512Z]                     }
+[2024-07-11T10:19:51.512Z]                 ]
+[2024-07-11T10:19:51.512Z]             }
+[2024-07-11T10:19:51.512Z]         }
+[2024-07-11T10:19:51.512Z]     }
+[2024-07-11T10:19:51.512Z] }
+[2024-07-11T10:19:51.512Z] Merging and integration completed successfully.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Commit Output)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2024-07-11T10:19:52.156Z] + git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
+[2024-07-11T10:19:52.157Z] + git config --global user.email alexnethunter@gmail.com
+[2024-07-11T10:19:52.157Z] + git config --global user.name alexnethunter
+[2024-07-11T10:19:52.157Z] + git add -A
+[2024-07-11T10:19:52.157Z] + git commit -m Automatically committed merged JSON output
+[2024-07-11T10:19:52.157Z] On branch main
+[2024-07-11T10:19:52.157Z] nothing to commit, working tree clean
+[2024-07-11T10:19:52.157Z] + echo Nothing to commit
+[2024-07-11T10:19:52.157Z] Nothing to commit
+[2024-07-11T10:19:52.157Z] + git push -u origin main
+[2024-07-11T10:19:52.407Z] Everything up-to-date
+[2024-07-11T10:19:52.407Z] Branch 'main' set up to track remote branch 'main' from 'origin'.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+[2024-07-11T10:19:52.731Z] Pipeline executed successfully!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
