@@ -50,7 +50,7 @@ if __name__ == "__main__":
     merged_data = merge_json_files(url1, url2)
     
     # Print Output the merged data
-    #print(json.dumps(merged_data, indent=4))
+    print(json.dumps(merged_data, indent=4))
     
     # Write the merged data to a new file
     with open('merged_output.json', 'w') as outfile:
