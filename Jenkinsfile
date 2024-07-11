@@ -55,7 +55,7 @@ pipeline {
                 script {
                     try {
                             sh '''
-                                git remote set-url origin https://${GIT-TOKEN}@github.com/ALEXNETHUNTER/Python.git
+                                git remote set-url origin https://${GIT_TOKEN}@github.com/ALEXNETHUNTER/Python.git
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
                                 git add merged_output.json
