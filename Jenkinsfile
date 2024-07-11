@@ -55,7 +55,6 @@ pipeline {
                 script {
                     try {
                             sh '''
-                                git config --global credential.helper store
                                 git remote set-url origin https://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@github.com/ALEXNETHUNTER/Python.git
                                 git config --global user.email "${GIT_AUTHOR_EMAIL}"
                                 git config --global user.name "${GIT_AUTHOR_NAME}"
