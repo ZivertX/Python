@@ -17,4 +17,4 @@ Add TOKEN variable under system variables in Jenkins configuration and paste tok
 
 Run the Pipeline:
 
-After first pipeline run you can provide the URLs of the JSON files as parameters.
+After first pipeline run you can provide the URLs of the JSON files as parameters in Jenkins GUI.
